@@ -5,18 +5,28 @@ constructor(props){
     super(props)
 
     this.state = {
-        
+        planets: [],
     }
+    
 }
 
 
 componentWillMount(){
-    
+    axios.get('https://swapi.co/api/planets/').then(res => {
+        
+        let planets = res.data.results
+        
+        this.setState({ planets })
+        
+    })
 }
 
     render() {
+       
         return(
-            <div> Hey </div>
+            <div> 
+              <div className=''> </div>      
+            </div>
         )
     }
 }
