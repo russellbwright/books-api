@@ -24,7 +24,7 @@ componentWillMount(){
 
 
     axios.get('https://swapi.co/api/planets/').then(res => {
-        
+        console.log(res.data.results)
         let planets = res.data.results
         
         this.setState({ planets })
@@ -32,20 +32,26 @@ componentWillMount(){
     })
 }
 
+renderStateItems(item, index){
+
+    return(
+        <div key={index}> 
+            <div> {item.name} </div>
+        </div>
+    )
+}
+
     render() {
         
         return(
             //need to map over something here and make a list
-            <div> Hey </div>
-            <div>
-                <ul>
-                    {
-                    this.state.people.map(function(item, i){
-                    return <li key={i}>Test</li>
-                    })
-                    }           
-                </ul>
-            </div>    
+            <div> 
+                <div> Hey </div> 
+
+                <div>
+                    {this.state.people.map( (x, i) => this.renderStateItems(x,i)) }
+                </div>    
+            </div>
             )
        
     }
