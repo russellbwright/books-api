@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+
+
+
 class List extends Component {
 constructor(props){
     super(props)
 
     this.state = {
-        people: []
+        people: [],
+        planets: []
     }
+    
 }
 
 
@@ -15,6 +20,15 @@ componentWillMount(){
         console.log(res.data.results)
        let people = res.data.results
         this.setState({ people })
+    })
+
+
+    axios.get('https://swapi.co/api/planets/').then(res => {
+        
+        let planets = res.data.results
+        
+        this.setState({ planets })
+        
     })
 }
 
@@ -31,8 +45,9 @@ componentWillMount(){
                     })
                     }           
                 </ul>
-            </div>
-        )
+            </div>    
+            )
+       
     }
 }
 
