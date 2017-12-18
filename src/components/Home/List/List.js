@@ -5,18 +5,33 @@ constructor(props){
     super(props)
 
     this.state = {
-        
+        people: []
     }
 }
 
 
 componentWillMount(){
-    
+    axios.get('https://swapi.co/api/people').then((res) => { 
+        console.log(res.data.results)
+       let people = res.data.results
+        this.setState({ people })
+    })
 }
 
     render() {
+        
         return(
+            //need to map over something here and make a list
             <div> Hey </div>
+            <div>
+                <ul>
+                    {
+                    this.state.people.map(function(item, i){
+                    return <li key={i}>Test</li>
+                    })
+                    }           
+                </ul>
+            </div>
         )
     }
 }
