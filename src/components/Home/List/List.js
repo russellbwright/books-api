@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './List.css'
 import axios from 'axios'
-
+import curl from 'curl'
 
 
 class List extends Component {
@@ -10,7 +10,8 @@ constructor(props){
 
     this.state = {
         people: [],
-        planets: []
+        planets: [],
+        marvel: []
     }
     
 }
@@ -30,6 +31,13 @@ componentWillMount(){
         
         this.setState({ planets })
         
+    })
+
+    axios.get('https://gateway.marvel.com:443/v1/public/characters?name=hulk&apikey=a29d1639d4e0f5bc309318e2b68156cb')
+    .then(res => {
+        console.log(res.data.data.results[0])
+        var marvel = res.data.data.results[0]
+        this.setState({ marvel })
     })
 }
 
@@ -55,6 +63,8 @@ renderPlanetItems(item, index){
 
     render() {
         
+        
+
         return(
             //need to map over something here and make a list
             <div> 
@@ -71,7 +81,13 @@ renderPlanetItems(item, index){
                             
                             {this.state.planets.map( (x,i) => this.renderPlanetItems(x,i)) }
                         </div>
-                    </div>            
+                    </div>
+
+                    <div>
+                        
+                        <div>{this.state.marvel.name}</div>
+                        
+                    </div>                
             </div>
             )
        
