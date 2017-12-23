@@ -63,7 +63,8 @@ class List extends Component {
 
         return (
             <div key={index}>
-                <img src={hero.thumbnail.path} />
+            {/* thumbnails are forbidden on this server */}
+                {/* <img src={hero.thumbnail.path} /> */}
                 <div> {hero.name} </div>
             </div>
         )
