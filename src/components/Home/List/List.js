@@ -63,6 +63,7 @@ class List extends Component {
 
         return (
             <div key={index}>
+                <img src={hero.thumbnail.path} />
                 <div> {hero.name} </div>
             </div>
         )
