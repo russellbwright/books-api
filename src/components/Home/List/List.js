@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './List.css'
 import axios from 'axios'
 
@@ -49,7 +50,7 @@ class List extends Component {
 
         return (
             <div key={index}>
-                <div> {item.name} </div>
+                <Link to={`/api/:${item.name}`}><div> {item.name} </div></Link>
             </div>
         )
     }
