@@ -14,6 +14,10 @@ class List extends Component {
             marvel: []
         }
 
+        this.characters = true;
+        this.planetss = true;
+
+
     }
 
 
@@ -70,7 +74,9 @@ class List extends Component {
         )
     }
 
-
+planetsOff = () => {
+    this.setState= false;
+}
 
     render() {
 
@@ -80,14 +86,15 @@ class List extends Component {
             //need to map over something here and make a list
             <div>
                 <div className='main-title'> Title </div>
+                <button onClick={this.planetsOff}> Planets Off</button>
 
                 <div className='display-flex'>
-                    <div>
+                    <div className='character-div'>
                         <div className='sub-title'> Characters </div>
                         {this.state.people.map((x, i) => this.renderPeopleItems(x, i))}
                     </div>
 
-                    <div>
+                    <div className='planets-div'>
                         <div className='sub-title'> Planets </div>
 
                         {this.state.planets.map((x, i) => this.renderPlanetItems(x, i))}
